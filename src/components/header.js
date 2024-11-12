@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const HeaderContainer = styled.div`
     overflow: hidden;
-    background-color: #f1f1f1;
+    background-color: #282828;
     padding: 20px 10px;
 `;
 
@@ -16,10 +16,8 @@ const Nav = styled.nav`
 
 const HeaderLink = styled.a`
     float: left;
-    color: black;
     text-align: center;
     padding: 12px;
-    text-decoration: none;
     font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
@@ -30,7 +28,7 @@ const HeaderLink = styled.a`
     }
 
     &.active {
-        background-color: dodgerblue;
+        background-color: #BB86FC;
         color: white;
     }
     
@@ -51,7 +49,7 @@ const LinkLogo = styled(HeaderLink)`
 const Header = () => {
     return (
         <HeaderContainer>
-            <LinkLogo href="#default" className="logo">Ícaro Furlaneto</LinkLogo>
+            <LinkLogo href="#default" className="logo">Ícaro Developer</LinkLogo>
             <Nav>
                 <HeaderLink href="#sobre" className="active">Sobre mim</HeaderLink>
                 <HeaderLink href="#projetos">Projetos</HeaderLink>

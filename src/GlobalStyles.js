@@ -9,8 +9,14 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         font-family: 'Roboto', sans-serif;
-        color: #333;
+        background-color: #1E1E1E;
+        color: #E0E0E0;
         line-height: 1.6;
+    }
+
+    a {
+        color: #E0E0E0;
+        text-decoration: none;
     }
 `;
 
