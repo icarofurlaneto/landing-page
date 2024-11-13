@@ -1,26 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import logo from "../assets/logoHeader.png";
 
 const HeaderContainer = styled.div`
-    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #282828;
     padding: 20px 10px;
+    position: relative;
 `;
 
 const Nav = styled.nav`
-    float: right;
+    display: flex;
+    gap: 20px;
 
     @media screen and (max-width: 500px) {
-        float: none;
+        display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background-color: #282828;
+        padding: 20px;
+        z-index: 1000;
+    }
 `;
 
 const HeaderLink = styled.a`
-    float: left;
     text-align: center;
     padding: 12px;
     font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
 
     &:hover {
         background-color: #ddd;
@@ -28,32 +42,105 @@ const HeaderLink = styled.a`
     }
 
     &.active {
-        background-color: #BB86FC;
+        background-color: #00ADB5;
         color: white;
     }
-    
-    @media screen and (max-width: 500px) {
-        float: none;
-        display: block;
-        text-align: left;
+`;
+
+const LogoContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #1E1E1E;
     }
 `;
 
-const LinkLogo = styled(HeaderLink)`
-    font-size: 25px;
-    font-weight: bold;
+const LogoImage = styled.img`
+    height: 60px;
+    width: auto;
 `;
 
+const MenuButton = styled.button`
+    display: none;
+    padding: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
 
+    @media screen and (max-width: 500px) {
+        display: block;
+    }
+`;
 
 const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeLink, setActiveLink] = useState(true);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleMouseEnter = (link) => {
+        setActiveLink(link);
+    };
+
+    const handleMouseLeave = () => {
+        setActiveLink(false);
+    };
+
+    const scrollToSection = (e) => {
+        e.preventDefault();
+        const targetId = e.target.getAttribute('href').slice(1);
+        const element = document.getElementById(targetId);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+    };
+
     return (
         <HeaderContainer>
-            <LinkLogo href="#default" className="logo">Ícaro Developer</LinkLogo>
-            <Nav>
-                <HeaderLink href="#sobre" className="active">Sobre mim</HeaderLink>
-                <HeaderLink href="#projetos">Projetos</HeaderLink>
-                <HeaderLink href="#contato">Contato</HeaderLink>
+            <LogoContainer>
+                <LogoImage src={logo} alt="Logo" />
+            </LogoContainer>
+            <MenuButton onClick={toggleMenu}>☰</MenuButton>
+            <Nav $isOpen={isMenuOpen}>
+                <HeaderLink
+                    href="#sobre"
+                    className={activeLink === 'sobre' ? 'active' : ''}
+                    onMouseEnter={() => handleMouseEnter('sobre')}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={scrollToSection}
+                >
+                    Sobre mim
+                </HeaderLink>
+                <HeaderLink
+                    href="#projetos"
+                    className={activeLink === 'projetos' ? 'active' : ''}
+                    onMouseEnter={() => handleMouseEnter('projetos')}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={scrollToSection}
+                >
+                    Projetos
+                </HeaderLink>
+                <HeaderLink
+                    href="#contato"
+                    className={activeLink === 'contato' ? 'active' : ''}
+                    onMouseEnter={() => handleMouseEnter('contato')}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={scrollToSection}
+                >
+                    Contato
+                </HeaderLink>
             </Nav>
         </HeaderContainer>
     );

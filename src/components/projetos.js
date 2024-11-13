@@ -7,16 +7,12 @@ const ProjetosSection = styled.section`
     max-width: 800px;
     padding: 40px;
     margin: 40px auto;
-    background: linear-gradient(145deg, #2a2a2a, #282828);
-    border-radius: 15px;
-    box-shadow: 
-        0 10px 20px rgba(0, 0, 0, 0.2),
-        inset 0 2px 10px rgba(255, 255, 255, 0.05);
+    background: #282828;
+    border-radius: 15px; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     
     &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
 
     h1 {
@@ -66,10 +62,8 @@ const Projetos = () => {
         <ProjetosSection id="projetos">
             <h1>Projetos</h1>
             <ProjetoCard>
-                <h3>Calculadora de IMC</h3>
-                <p>Calculadora de IMC é uma aplicação web desenvolvida com React que permite calcular o Índice de Massa
-                    Corporal (IMC) com facilidade. Além do cálculo, a aplicação fornece classificações e feedback visual
-                    baseado no resultado.</p>
+                <h3>Projeto 1</h3>
+                <p>Descrição do projeto 1</p>
             </ProjetoCard>
         </ProjetosSection>
     );

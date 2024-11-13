@@ -7,16 +7,12 @@ const AboutSection = styled.section`
     max-width: 800px;
     padding: 40px;
     margin: 40px auto;
-    background: linear-gradient(145deg, #2a2a2a, #282828);
+    background: #282828;
     border-radius: 15px;
-    box-shadow: 
-        0 10px 20px rgba(0, 0, 0, 0.2),
-        inset 0 2px 10px rgba(255, 255, 255, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     
     &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
 
     h2 {
