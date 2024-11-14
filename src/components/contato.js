@@ -102,6 +102,8 @@ const Contato = () => {
         mensagem: ''
     });
 
+    const [status, setStatus] = useState('');
+
     const manipularInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -110,10 +112,28 @@ const Contato = () => {
         }));
     };
 
-    const manipularSubmit = (e) => {
+    const manipularSubmit = async (e) => {
         e.preventDefault();
-        alert("Mensagem enviada!");
+
+        try {
+            const response = await fetch("https://formspree.io/f/mjkvrllw", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+            setStatus("Mensagem enviada com sucesso!");
+            setFormData({ nome: '', email: '', mensagem: '' });
+        } else {
+            setStatus("Erro ao enviar mensagem. Tente novamente.");
+        }
+    } catch (error) {
+        setStatus("Erro ao enviar mensagem. Tente novamente.");
     }
+};
 
     return (
         <ContatoSection id="contato">
@@ -144,6 +164,7 @@ const Contato = () => {
                     required
                 />
                 <button type="submit">Enviar</button>
+                {status && <p>{status}</p>}
             </StyledForm>
         </ContatoSection>
     );
