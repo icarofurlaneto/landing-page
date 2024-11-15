@@ -72,8 +72,10 @@ const Projetos = () => {
       <h2>Projetos</h2>
       <ImagensContainer>
         <div className="projeto">
-          <img src={screenshot} alt="Projeto 1" />
-          <div className="descricao">Calculadora de IMC</div>
+          <a href="https://icarofurlaneto.github.io/calculadora-imc/" target="_blank" rel="noopener noreferrer">
+            <img src={screenshot} alt="Projeto 1" />
+            <div className="descricao">Calculadora de IMC</div>
+          </a>
         </div>
       </ImagensContainer>
     </ProjetosSection>
