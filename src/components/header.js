@@ -34,7 +34,19 @@ const HeaderLink = styled.a`
     font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease-in-out;
+
+    @media (max-width: 768px) {
+        display: block;
+        padding: 15px;
+        transform: translateX(-10px);
+        opacity: 0;
+        
+        &.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
 
     &:hover {
         background-color: #ddd;
@@ -65,27 +77,8 @@ const LogoImage = styled.img`
     width: auto;
 `;
 
-const MenuButton = styled.button`
-    display: none;
-    padding: 10px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-
-    @media screen and (max-width: 500px) {
-        display: block;
-    }
-`;
-
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeLink, setActiveLink] = useState(true);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
 
     const handleMouseEnter = (link) => {
         setActiveLink(link);
@@ -112,8 +105,7 @@ const Header = () => {
             <LogoContainer>
                 <LogoImage src={logo} alt="Logo" />
             </LogoContainer>
-            <MenuButton onClick={toggleMenu}>☰</MenuButton>
-            <Nav $isOpen={isMenuOpen}>
+            <Nav>
                 <HeaderLink
                     href="#sobre"
                     className={activeLink === 'sobre' ? 'active' : ''}

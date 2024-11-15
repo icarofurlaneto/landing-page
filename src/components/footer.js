@@ -20,7 +20,6 @@ const SocialLinks = styled.div`
     margin-bottom: 20px;
 
     a {
-        color: #00000;
         font-size: 24px;
         margin: 0 15px;
         transition: color 0.3s ease;
@@ -31,7 +30,7 @@ const SocialLinks = styled.div`
     }
 `;
 
-const Copyright = styled.p`
+const CopyrightText = styled.span`
     color: #888;
     font-size: 14px;
     margin: 0;
@@ -52,9 +51,9 @@ const Footer = () => {
                         <i className="fab fa-linkedin"></i>
                     </a>
                 </SocialLinks>
-                <Copyright>
-                    <p>&copy; {currentYear} ÍcaroDev. Todos os direitos reservados.</p>
-                </Copyright>
+                <CopyrightText>
+                    © {currentYear} Your Name. All rights reserved.
+                </CopyrightText>
             </FooterContent>
         </StyledFooter>
     );
