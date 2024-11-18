@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import screenshot from '../assets/screenshot.png';
+import calculadora_imc from '../assets/calculadora_imc.png';
+import em_breve from '../assets/em_breve.png';
 
 const ProjetosSection = styled.section`
   width: 90%;
@@ -44,18 +45,22 @@ const ImagensContainer = styled.div`
     }
 
     &:hover img {
-      transform: scale(1.05);
+      transform: translateY(-5px);
     }
 
     .descricao {
       position: absolute;
-      bottom: 0;
+      top: 0;
       left: 0;
       right: 0;
-      background: rgba(40, 40, 40, 0.8);
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(40, 40, 40, 0.7);
       color: #fff;
-      padding: 10px;
       text-align: center;
+      padding: 10px;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
@@ -66,18 +71,53 @@ const ImagensContainer = styled.div`
   }
 `;
 
+const listaProjetos = [
+  {
+    id: 1,
+    nome: "Calculadora de IMC",
+    imagem: calculadora_imc,
+    link: "https://icarofurlaneto.github.io/calculadora-imc/",
+    descricao: "Clique aqui",
+  },
+  {
+    id: 2,
+    nome: "Em breve",
+    imagem: em_breve,
+  },
+  {
+  id: 3,
+  nome: "Em breve",
+  imagem: em_breve,
+},
+{
+id: 4,
+nome: "Em breve",
+imagem: em_breve,
+}
+];
+
+const Instrucao = styled.p`
+  text-align: center;
+  font-size: 14px; // Reduz o tamanho da fonte
+  color: #aaa; // Usa uma cor mais clara
+  margin-bottom: 15px;
+`;
+
 const Projetos = () => {
   return (
     <ProjetosSection id="projetos">
       <h2>Projetos</h2>
       <ImagensContainer>
-        <div className="projeto">
-          <a href="https://icarofurlaneto.github.io/calculadora-imc/" target="_blank" rel="noopener noreferrer">
-            <img src={screenshot} alt="Projeto 1" />
-            <div className="descricao">Calculadora de IMC</div>
-          </a>
-        </div>
+        {listaProjetos.map((projeto) => (
+          <div key={projeto.id} className="projeto">
+            <a href={projeto.link} target="_blank" rel="noopener noreferrer">
+              <img src={projeto.imagem} alt={projeto.nome} />
+              <div className="descricao">{projeto.descricao}</div>
+            </a>
+          </div>
+        ))}
       </ImagensContainer>
+      <Instrucao>(Clique na imagem para acessar a aplicação desejada)</Instrucao>
     </ProjetosSection>
   );
 };

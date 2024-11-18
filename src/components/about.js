@@ -44,7 +44,8 @@ const About = () => {
     return (
         <AboutSection id="sobre">
             <h2>Quem sou?</h2>
-            <p>Desenvolvedor Full-Stack, estudante de Análise e Desenvolvimento de Sistemas na Universidade Tecnológica Federal do Paraná. Apaixonado por desenvolvimento e comprometido em criar soluções digitais eficazes e personalizadas para atender às suas necessidades.</p>
+            <p><strong>Desenvolvedor Full-Stack</strong>, estudante de <strong>Análise e Desenvolvimento de Sistemas</strong> na <strong>Universidade Tecnológica Federal do Paraná</strong>. Apaixonado por <strong>desenvolvimento</strong> e comprometido em criar <strong>soluções digitais eficazes e personalizadas</strong> para atender às suas <strong>necessidades</strong>.</p>
+
         </AboutSection>
     );
 };

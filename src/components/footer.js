@@ -52,7 +52,7 @@ const Footer = () => {
                     </a>
                 </SocialLinks>
                 <CopyrightText>
-                    © {currentYear} Your Name. All rights reserved.
+                    © {currentYear} ÍcaroDev. Todos direitos reservados.
                 </CopyrightText>
             </FooterContent>
         </StyledFooter>
